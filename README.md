@@ -2,6 +2,8 @@
 
 East US에 Azure Firewall Basic과 **Standard_D2s_v7 / Ubuntu 24.04 LTS VM 2대**를 배포합니다. 각 VM은 별도 VNet에 있으며, 인터넷 및 다른 Spoke로 가는 트래픽은 중앙 방화벽을 경유합니다.
 
+2026-11-19 실제 배포 및 양쪽 VM 통신 테스트를 완료했습니다. [검증 결과](VALIDATION.md)를 참고하세요.
+
 ```mermaid
 flowchart LR
   A["App-VNet · 10.10.0.0/16<br/>Ubuntu VM · 10.10.1.4"]
