@@ -26,6 +26,10 @@ run "isolated_hub_and_spokes" {
     error_message = "Both spokes need bidirectional hub peering."
   }
   assert {
+    condition     = alltrue([for nsg in azurerm_network_security_group.spoke : anytrue([for rule in nsg.security_rule : rule.destination_address_prefix == "AzurePlatformDNS" && rule.destination_port_range == "*" && rule.access == "Deny"])])
+    error_message = "AzurePlatformDNS bypass blocking requires the platform-specific wildcard port."
+  }
+  assert {
     condition     = length(azurerm_firewall_policy_rule_collection_group.lab.nat_rule_collection) == 0
     error_message = "Inbound management must be disabled by default."
   }

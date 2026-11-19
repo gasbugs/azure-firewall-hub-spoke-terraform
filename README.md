@@ -39,7 +39,7 @@ flowchart LR
 - 각 VM 서브넷의 `0.0.0.0/0`과 반대편 VNet 주소 공간을 방화벽 내부 IP로 라우팅합니다.
 - VM에는 공인 IP가 없고 서브넷의 기본 외부 연결도 비활성화합니다.
 - Basic에는 DNS 프록시가 없으므로 Spoke VNet DNS를 `8.8.8.8`로 지정합니다. DNS도 UDR 및 방화벽 네트워크 규칙을 거칩니다.
-- Azure 기본 DNS는 UDR을 우회할 수 있으므로 NSG에서 `AzurePlatformDNS`의 53번 포트를 별도로 거부합니다. Azure VM 플랫폼 관리 통신과 메타데이터는 일반 인터넷 통신과 구별됩니다.
+- Azure 기본 DNS는 UDR을 우회할 수 있으므로 NSG에서 `AzurePlatformDNS`를 별도로 거부합니다. 이 특수 서비스 태그는 Azure API에서 포트 `*`를 요구합니다. Azure VM 플랫폼 관리 통신과 메타데이터는 일반 인터넷 통신과 구별됩니다.
 - VM의 패키지 설치·업데이트를 위한 광범위한 외부 허용 규칙은 없습니다.
 
 ## 사전 조건

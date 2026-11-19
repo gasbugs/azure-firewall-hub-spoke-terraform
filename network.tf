@@ -139,7 +139,7 @@ resource "azurerm_network_security_group" "spoke" {
     access                     = "Deny"
     protocol                   = "*"
     source_port_range          = "*"
-    destination_port_range     = "53"
+    destination_port_range     = "*"
     source_address_prefix      = "*"
     destination_address_prefix = "AzurePlatformDNS"
   }
